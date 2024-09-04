@@ -1,0 +1,16 @@
+def validate_dnaX (dna_seq): # Checks if DNA sequence is valid. Returns True if sequence is valid, or False otherwise. "
+  seqm = dna_seq.upper()
+  valid = seqm.count("A") + seqm.count("C") + seqm.count("G") + seqm.count("T")
+  if valid == len (seqm) : 
+    print("Human!") 
+    return True
+  else :  
+    print("Mutant!")
+    return False
+
+seq_aa = input ("Protein sequence:") ##Comando input infresa la seuqnecia de proteinas
+if validate_dnaX (seq_aa) : 
+    print ("Sequence", str(seq_aa).upper(), "is valid (human).")
+else : 
+    print ("Sequence", str(seq_aa).upper(), "is not valid (not human).")
+
