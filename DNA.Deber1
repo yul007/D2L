@@ -8,7 +8,7 @@ def validate_dnaX (dna_seq): # Checks if DNA sequence is valid. Returns True if 
     print("Mutant!")
     return False
 
-seq_aa = input ("Protein sequence:") ##Comando input infresa la seuqnecia de proteinas
+seq_aa = input ("Protein sequence:") ##Comando input ingresa la seuqnecia de proteinas
 if validate_dnaX (seq_aa) : 
     print ("Sequence", str(seq_aa).upper(), "is valid (human).")
 else : 
