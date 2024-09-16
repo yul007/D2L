@@ -1,0 +1,36 @@
+#permite ingresar las dos secuencias a comparar por el usuario
+seq_aa = input ("[Sec 1] Ingresar secuencia referente:") 
+seq_bb = input ("[Sec 2] Ingresar secuencia a comparar:")
+
+def validate_dnaX (dna_seq): # Chequea si la sec de DNA es valida para las letras ACGT. Regresa  True si es valido, y False si no es."
+  seqm = dna_seq.upper()
+  valid = seqm.count("A") + seqm.count("C") + seqm.count("G") + seqm.count("T") #Da la condición de que la sec solo contenga estas letras para regresar True
+  if valid == len (seqm) :  #Se valida si las bases ingresadas pertenecen a las bases nitrogenadas válidas (ACGT) mediante su longutd.
+    return True
+  else :
+    return False
+
+if validate_dnaX (seq_aa) and (seq_bb): #Compara ambas sec y chequea sus bases nitrogenadas 
+    print ("\nLas secuencias:" "(",str(seq_aa).upper(),") y (",str(seq_bb).upper(),") son validas (contienen bases nitrogenadas).") #ambas sec tienen bases validas
+    if seq_aa == seq_bb:
+      print("La primera y segunda secuencia son iguales (No hay mutación).") #se comparan las sec y se encuentra que son iguales (no hay mutacion)
+    else:
+      print("Hay una mutación en la segunda secuencia.") #se comparan las sec y se encuentra que son diferentes (hay una mutacion)
+else :
+    print("Por favor ingresar bases nitrogenadas válidas en las secuencias.") #una sec no tiene bases nitrogenadas validas 
+
+
+
+#Conteo de Bases en cada Sec para encontrar diferencias en las cantidades de Bases#
+print ("\n--------Conteo de Bases Nitrogenadas de cada Secuencia-------")
+
+freq_aa = frequencyX(seq_aa)  # Calcula la frecuencia la primera sec
+freq_bb = frequencyX(seq_bb)  # Calcula la frecuencia la segunda sec
+
+#Ordena las frecuencias de forma descendente
+list_f = sorted(freq_aa.items(), key=lambda x: x[1], reverse=True)
+list_p = sorted(freq_bb.items(), key=lambda x: x[1], reverse=True)
+
+# Muestra ambas listas para comparar las bases
+for (k, v), (a, w) in zip(list_f, list_p):
+    print("Sec 1:", k, ":", v, "     Sec 2:", a, ":", w)
